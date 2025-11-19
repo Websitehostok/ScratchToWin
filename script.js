@@ -101,8 +101,8 @@ let gameState = {
 };
 
 // Ad cooldown settings
-const AD_COOLDOWN_MINUTES = 2;
-const MAX_ADS_PER_COOLDOWN = 3;
+const AD_COOLDOWN_MINUTES = 1;
+const MAX_ADS_PER_COOLDOWN = 2;
 const SHORT_COOLDOWN_SECONDS = 10; // Add this line
 
 // Secret Earning daily limits
