@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch To Earn- Win Real Money</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Ad Scripts -->
+<script src='//libtl.com/sdk.js' data-zone='10187883' data-sdk='show_10187883'></script>
+<script src='//libtl.com/sdk.js' data-zone='10187879' data-sdk='show_10187879'></script>
+<script src='//libtl.com/sdk.js' data-zone='10187871' data-sdk='show_10187871'></script>
+<script src='//libtl.com/sdk.js' data-zone='10187867' data-sdk='show_10187867'></script>
+<script src='//libtl.com/sdk.js' data-zone='10187596' data-sdk='show_10187596'></script>
+<script src='//libtl.com/sdk.js' data-zone='10187592' data-sdk='show_10187592'></script>
+<script src='//libtl.com/sdk.js' data-zone='10187587' data-sdk='show_10187587'></script>
+<script src='//libtl.com/sdk.js' data-zone='10080962' data-sdk='show_10080962'></script>
+<script src='//libtl.com/sdk.js' data-zone='10075905' data-sdk='show_10075905'></script>
+<script src='//libtl.com/sdk.js' data-zone='10035122' data-sdk='show_10035122'></script>
+        
+        <!-- Live Ticker -->
+        <div class="live-ticker">
+            <div class="ticker-content" id="tickerContent"></div>
+        </div>
+        
+        <!-- Header -->
+        <div class="header">
+            <h1><i class="fas fa-gem"></i> Indian Scratch Card</h1>
+            <div class="balance-container">
+                <div class="balance">Balance: <span id="balanceAmount">0</span> ₹</div>
+                <div class="winnings">Today's Winnings: <span id="winningsAmount">0</span> ₹</div>
+            </div>
+        </div>
+        
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs">
+            <button class="nav-tab active" data-tab="scratch">
+                <i class="fas fa-scroll"></i>
+                <span>Scratch</span>
+            </button>
+            <button class="nav-tab" data-tab="withdraw">
+                <i class="fas fa-wallet"></i>
+                <span>Cash Out</span>
+            </button>
+            <button class="nav-tab" data-tab="stats">
+                <i class="fas fa-chart-line"></i>
+                <span>Stats</span>
+            </button>
+            <button class="nav-tab" data-tab="secret">
+                <i class="fas fa-user-secret"></i>
+                <span>Secret Earning</span>
+            </button>
+        </div>
+        
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <!-- Scratch Tab -->
+            <div class="tab-panel active" id="scratch-panel">
+                <div class="game-area">
+                    <div class="scratch-container">
+                        <canvas id="scratch" width="400" height="300"></canvas>
+                        <div class="scratch-sheen" id="scratchSheen"></div>
+                        <div class="scratch-card rarity-common" id="scratchCard">
+                            <div class="rarity-badge" id="rarityBadge">Common</div>
+                            <div class="prize-text">Your Prize</div>
+                            <div class="prize-amount" id="cardPrizeAmount">?</div>
+                            <div class="congrats-text">Scratch to Reveal!</div>
+                            <div class="instruction-text">Scratch the card to see if you won!</div>
+                            <div class="scratch-progress">
+                                <div class="progress-bar" id="progressBar"></div>
+                            </div>
+                        </div>
+                        <div class="scratch-overlay" id="scratchOverlay">
+                            <div class="scratch-instruction">
+                                <i class="fas fa-hand-point-up"></i>
+                                <p>Watch ad to unlock scratch card!</p>
+                                <div class="ad-zone-info" id="adZoneInfo">Ad Zone: Loading...</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="prize-display" id="prizeDisplay">
+                        <div class="prize-value">?</div>
+                        <div class="prize-label">Your Prize</div>
+                    </div>
+                </div>
+               <!-- Add this RIGHT AFTER the scratchConfig div in the scratch-panel -->
+<div id="prizeConfig" 
+     data-zero-percentage="30"
+     data-common-min="2"
+     data-common-max="8" 
+     data-rare-min="10"
+     data-rare-max="15"
+     data-epic-min="15"
+     data-epic-max="25">
+</div>
+                
+                <div class="result-area">
+                    <div class="result-message" id="resultMessage">
+                        <i class="fas fa-gift"></i>
+                        <span>Watch ad to unlock and win amazing prizes!</span>
+                    </div>
+                    <div class="cooldown-indicator" id="cooldownIndicator"></div>
+                </div>
+                
+                <div class="controls">
+                    <button id="unlockBtn" class="btn btn-primary" aria-label="Watch advertisement to unlock scratch card">
+                        <i class="fas fa-unlock"></i> Watch Ad to Unlock
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Withdraw Tab -->
+            <div class="tab-panel" id="withdraw-panel">
+                <div class="withdraw-container">
+                    <div class="withdraw-card">
+                        <h2><i class="fas fa-money-bill-wave"></i> Cash Out</h2>
+                        <div class="withdraw-info">
+                            <div class="withdraw-amount">
+                                <span class="amount-label">Withdrawal Amount:</span>
+                                <span class="amount-value">₹<span id="withdrawAmount">2000</span></span>
+                            </div>
+                            <div class="balance-info">
+                                <span class="balance-label">Your Balance:</span>
+                                <span class="balance-value" id="withdrawBalance">0 ₹</span>
+                            </div>
+                            <div class="required-info">
+                                <span class="required-label">Minimum Balance:</span>
+                                <span class="required-value" id="requiredBalance">2000 ₹</span>
+                            </div>
+                        </div>
+                        
+                        <div class="email-input-container">
+                            <input type="email" class="email-input" id="paytmInput" placeholder="Enter your Paytm email">
+                            <div class="email-error" id="emailError">Please enter a valid email address</div>
+                        </div>
+                        
+                        <button id="withdrawBtn" class="btn btn-withdraw">
+                            <i class="fab fa-paytm"></i> Withdraw Now
+                        </button>
+                        
+                        <div class="withdraw-note">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Withdrawals processed within 1-3 hours. Minimum withdrawal: ₹2000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="withdraw-history">
+                        <h3>Recent Withdrawals</h3>
+                        <div class="history-list" id="historyList">
+                            <!-- History items will be added by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Stats Tab -->
+            <div class="tab-panel" id="stats-panel">
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <h3><i class="fas fa-chart-bar"></i> Game Statistics</h3>
+                        <div class="stat-grid">
+                            <div class="stat-item">
+                                <span class="stat-label">Total Scratches:</span>
+                                <span class="stat-value" id="totalScratches">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cards Won:</span>
+                                <span class="stat-value" id="cardsWon">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Win Rate:</span>
+                                <span class="stat-value" id="winRate">0%</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Total Winnings:</span>
+                                <span class="stat-value" id="totalWinnings">0 ₹</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Today's Winnings:</span>
+                                <span class="stat-value" id="todayWinnings">0 ₹</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Current Streak:</span>
+                                <span class="stat-value" id="currentStreak">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="leaderboard-card">
+                        <h3><i class="fas fa-trophy"></i> Top Players</h3>
+                        <div class="leaderboard-list" id="leaderboardList">
+                            <!-- Leaderboard items will be added by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secret Earning Tab -->
+            <div class="tab-panel" id="secret-panel">
+                <div class="motivator-banner motivator-gold">
+                    <div class="motivator-text">Earn up to <strong>₹1,00,000</strong></div>
+                    <div class="daily-info" id="se2DailyInfo">10 uses/day • resets in 25h</div>
+                </div>
+
+                <!-- Config: easy to edit URL(s) and passwords in HTML -->
+                <div id="se2Config" data-limit="10" data-window-hours="25"></div>
+                <script id="se2OffersData" type="application/json">[
+{ "title": "Offer 1",  "url": "https://tpi.li/Rwp",    "payout": 12, "password": "rwp@abcd13" },
+{ "title": "Offer 2",  "url": "https://tpi.li/Rwok",   "payout": 14, "password": "rwok@qwat710" },
+{ "title": "Offer 3",  "url": "https://tpi.li/Rwio",   "payout": 16, "password": "rwio@jsr721" },
+{ "title": "Offer 4",  "url": "https://tpi.li/Rwqs",   "payout": 10, "password": "rwqs@okxata716" },
+{ "title": "Offer 5",  "url": "https://tpi.li/Rwaw",   "payout": 8,  "password": "rwaw@hota698" },
+{ "title": "Offer 6",  "url": "https://tpi.li/Rwabc",  "payout": 15, "password": "rwabc@gt21" },
+{ "title": "Offer 7",  "url": "https://tpi.li/Rwytu",  "payout": 11, "password": "rwytu@gtw32" },
+{ "title": "Offer 8",  "url": "https://tpi.li/Rwopk",  "payout": 13, "password": "rwopk@21s" },
+{ "title": "Offer 9",  "url": "https://tpi.li/Rwsp",   "payout": 9,  "password": "rwsp@okxatasp78" },
+{ "title": "Offer 10", "url": "https://tpi.li/Rwyes",  "payout": 16, "password": "rwyes@okxatayes69" }
+                ]</script>
+
+                <div class="se2-howto">
+                    <h4>How it works</h4>
+                    <ol>
+                        <li>Tap <strong>Open URL</strong> and complete all tasks on that page.</li>
+                        <li>At the end, you'll receive a <strong>password file</strong>.</li>
+                        <li>Return here, enter the password, and press <strong>Submit</strong> to earn.</li>
+                    </ol>
+                    <p class="note">Each offer pays ₹8–₹16. The top shows your total earning potential for motivation.</p>
+                </div>
+
+                <div id="se2OfferList" class="offer-list" aria-live="polite"></div>
+
+                <!-- Admin reset (double password) for SE2 -->
+                <div id="se2ResetConfig" data-pass1="2066" data-pass2="2039"></div>
+                <div class="easter-egg" data-target="se2ResetBlock" tabindex="0" aria-label="Hold 5 seconds to unlock admin reset">made by rhythm</div>
+                <div id="se2ResetBlock" class="reset-section hidden">
+                    <h4><i class="fas fa-undo"></i> Reset 25-hour Limit</h4>
+                    <p class="reset-note">Enter both passwords to reset uses and unlock all offers immediately.</p>
+                    <div class="reset-form">
+                        <input type="password" id="se2PassA" class="pw-input" placeholder="Password 1" aria-label="SE2 password 1">
+                        <input type="password" id="se2PassB" class="pw-input" placeholder="Password 2" aria-label="SE2 password 2">
+                        <button id="se2ResetBtn" class="btn btn-ghost">Reset</button>
+                    </div>
+                    <div class="reset-status" id="se2ResetStatus" aria-live="polite"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Celebration -->
+        <div class="celebration" id="celebration"></div>
+        
+        <!-- Modals -->
+        <div class="modal" id="adOverlay">
+            <div class="modal-content">
+                <div class="loading-spinner"></div>
+                <h3>Loading Rewards...</h3>
+                <p>Please wait while we prepare your scratch card</p>
+            </div>
+        </div>
+        
+        <div class="modal" id="winModal">
+            <div class="modal-content win-modal">
+                <div class="win-emoji" id="winEmoji">🎉</div>
+                <h2>Congratulations!</h2>
+                <div class="win-amount" id="winAmount">+0 ₹</div>
+                <button class="btn btn-primary" id="closeWinModal">Continue</button>
+            </div>
+        </div>
+        
+        <div class="modal" id="withdrawModal">
+            <div class="modal-content withdraw-modal">
+                <div class="withdraw-icon">💸</div>
+                <h2>Withdrawal Processing!</h2>
+                <p id="withdrawMessage">Your withdrawal of ₹2000 is being processed and will be sent to your Paytm account.</p>
+                <div class="queue-info">
+                    <div class="queue-item">
+                        <span class="queue-label">Queue Position:</span>
+                        <span class="queue-value">#<span id="queuePosition">0</span></span>
+                    </div>
+                    <div class="queue-item">
+                        <span class="queue-label">Estimated Time:</span>
+                        <span class="queue-value">1-3 hours</span>
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="closeWithdrawModal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <!-- Script JS -->
+    <script src="script.js"></script>
+</body>
+</html>
